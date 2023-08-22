@@ -1,5 +1,9 @@
 # Visual and Semantic Guided Scene Text Retrieval
 The project is based on the source code of maskrcnn-benchmark (https://github.com/facebookresearch/maskrcnn-benchmark) and TDSL (https://github.com/lanfeng4659/STR-TDSL.).
+![framework](https://github.com/lhl2xju/VSSTR/assets/113302250/a963e404-153b-43bb-b349-175787465daf)
+
+
+
 These were inspired by 
 @inproceedings{VSTR,
   title={Visual Matching is Enough for Scene Text Retrieval},
