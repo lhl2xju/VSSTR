@@ -1,10 +1,11 @@
 # Visual and Semantic Guided Scene Text Retrieval
+![Alt text](framework.jpg)
 The project is based on the source code of maskrcnn-benchmark (https://github.com/facebookresearch/maskrcnn-benchmark) and TDSL (https://github.com/lanfeng4659/STR-TDSL.).
 
 Next I will talk about how to set up the environment, test, train and visualize.
 
 ## 1. Build the environment
-   1) My cuda version is 10.0.0 and I don't know if other versions will be compatible.
+   1) My cuda version is 10.0 and I don't know if other versions will be compatible.
    2) conda create -n xxx python=3.7.0
    3) conda activate xxx
    4) pip install -r requirement.txt
