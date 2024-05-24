@@ -1,0 +1,58 @@
+torch==1.2.0
+torchvision==0.4.0
+numpy
+Pillow==7.2.0
+scipy==1.1.0
+scikit-learn
+scikit-image
+imageio
+Polygon3
+pyclipper
+pyyaml
+editdistance
+easydict
+opencv-python
+yacs
+tqdm
+thop
+Shapely
+opencv-contrib-python
+# 1. conda create -n vsstr python=3.7.5
+#    conda activate vsstr
+#    pip install -r torch-1.2.0.txt
+#    sudo apt-get install libglib2.0-0
+#    sudo apt-get install -y psmisc
+#    pip install gpustat
+#
+# 2. tar -zxvf 6af09dd938adf11baedabd89da6cd092d3959081.zip
+#    cd apex-6af09dd938adf11baedabd89da6cd092d3959081/
+#    python setup.py install
+#
+# 3. cd TDSL/maskrcnn_benchmark/
+#    python setup.py build develop
+#
+# 4. get SynthText900k GT file
+#    cd TDSL/utils/
+#    path --> images dir text_folder --> save GT file dir
+#    python synthText2GTFile.py
+#
+# 5. Path that must be modified
+#    maskrcnn_benchmark.config.path_catalog.py
+#         --> line(11, 17, 20, 23, 26, 29, 44, 50, 53, 56) --> images gallery path
+# 6. evalution model
+#    python test_net.py --ckpt xxx.pth --config-file ./_vsstr_/eval.yml --gpu 0 --dataset i(icdar-mlt-test-set)||t(total-text)||s(svt)||c(coco-text)||h(csvtr) -sj -ms -ss
+#    python test_net.py --save-dir ./_vsstr_/ ...
+#      --ckpt --> Individual model weights
+#      --save-dir -s --> A file path to save model weights
+#    example:
+#      test_net.py --ckpt ./_vsstr_/vsstr_8961.pth --config-file ./_vsstr_/eval.yml --gpu 0 --dataset t
+#        param::--save-json -sj --> maskrcnn_benchmark.data.datasets.evalution.retrieval.save_RR.py
+#                 --> Save the retrieval results, including similarity matrix, adjusted regression box, regression box confidence, and query words
+#                 --> ./save_RR
+#               --save-similarity -ss --> maskrcnn_benchmark.modeling.detectors.vsstr_model.py --> line(319)
+#                 --> Save predicted query embedding vectors and text instance embedding vectors
+#                 --> Eval/eval/inference/dataset-name_test/predict.pth
+#               --multi-scale -ms --> Retrieve on three scales
+# 
+# 7. training model
+#    CUDA_VISIBLE_DEVICES=0,1,2 python -m torch.distributed.launch --nproc_per_node=3 --master_port 10818 train_net.py --config-file ./_vsstr_/train.yml --batch-size 12 --save-dir ./_vsstr_/1124pret --weights ./_visual_/model_00xx000.pth --fps 3 --eng
