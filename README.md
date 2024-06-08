@@ -29,3 +29,7 @@ Next I will talk about how to set up the environment, test, train and visualize.
 ## 4. For visualize
    1) cd ../utils
    2) xxx_topk.py
+## 5. Due to network issues, the code can only be uploaded to the Baidu Cloud Drive address: https://pan.baidu.com/s/1XdbRuzCGbxt8sVWa74L3qg, code: xju4
+## 6. Datasets:
+   1) CSVTR: https://pan.baidu.com/s/14MjdMXRx6-f4JN0dUo0cFA
+   2) CTR: https://pan.baidu.com/s/13oVHCxK6G-nyzFKTYcOvNg
